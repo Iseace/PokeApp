@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, Image } from 'react-native';
 
 export function Details({ navigation, route }) {
-  const [pData, setPokemonData] = useState(null);
+  const [details, setPokemonData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export function Details({ navigation, route }) {
     navigation.navigate('Home');
   }
 
-  if (loading || !pData) {
+  if (loading || !details) {
     return (
       <View style={styles.mainContainer}>
         <ActivityIndicator size="large" color="#FFFFFF" />
@@ -45,21 +45,21 @@ export function Details({ navigation, route }) {
     <TouchableOpacity onPress={handleClick} style={styles.mainContainer}>
       <View style={styles.detailsContainer}>
         <View style={styles.imageContainer}>
-          <Image source={{ uri: pData?.sprites.front_default }} style={styles.pokemonImage} />
+          <Image source={{ uri: details?.sprites.front_default }} style={styles.pokemonImage} />
         </View>
         <Text style={styles.detailsTitle}>Pokémon Details</Text>
         <View style={styles.infoContainer}>
           <View style={styles.infoRow}>
             <Text style={styles.label}>Name:</Text>
-            <Text style={styles.value}>{pData?.name}</Text>
+            <Text style={styles.value}>{details?.name}</Text>
           </View>
           <View style={styles.infoRow}>
             <Text style={styles.label}>Height:</Text>
-            <Text style={styles.value}>{pData?.height}</Text>
+            <Text style={styles.value}>{details?.height}</Text>
           </View>
           <View style={styles.infoRow}>
             <Text style={styles.label}>Weight:</Text>
-            <Text style={styles.value}>{pData?.weight}</Text>
+            <Text style={styles.value}>{details?.weight}</Text>
           </View>
         </View>
       </View>
